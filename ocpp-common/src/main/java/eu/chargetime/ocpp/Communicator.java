@@ -155,26 +155,26 @@ public abstract class Communicator {
         Object call = makeCall(uniqueId, action, packPayload(request));
         try {
             if(radio.isClosed()) {
-                if (request.transactionRelated()) {
-                    logger.warn("Not connected: storing request to queue: {}", request);
-                    transactionQueue.add(call);
-                } else {
+                // if (request.transactionRelated()) {
+                    // logger.warn("Not connected: storing request to queue: {}", request);
+                    // transactionQueue.add(call);
+                // } else {
                     logger.warn("Not connected: can't send request: {}", request);
                     events.onError(uniqueId, "Not connected", "The request can't be sent due to the lack of connection", request);
-                }
-            } else if (request.transactionRelated() && transactionQueue.size() > 0) {
-                transactionQueue.add(call);
-                processTransactionQueue();
+                // }
+            // } else if (request.transactionRelated() && transactionQueue.size() > 0) {
+                // transactionQueue.add(call);
+                // processTransactionQueue();
             } else {
                 radio.send(call);
             }
         } catch (NotConnectedException ex) {
         	logger.warn("sendCall() failed: not connected");
-            if (request.transactionRelated()) {
-                transactionQueue.add(call);
-            } else {
+            // if (request.transactionRelated()) {
+                // transactionQueue.add(call);
+            // } else {
                 events.onError(uniqueId, "Not connected", "The request can't be sent due to the lack of connection", request);
-            }
+            // }
         }
     }
 

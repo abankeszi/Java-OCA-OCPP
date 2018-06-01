@@ -73,7 +73,7 @@ public class JSONClient implements IClientAPI {
         draftOcppOnly = new Draft_6455(Collections.emptyList(),
                 Collections.singletonList(new Protocol("ocpp1.6")));
         transmitter = new WebSocketTransmitter(configuration, draftOcppOnly);
-        JSONCommunicator communicator = new JSONCommunicator(transmitter);
+        RegexJSONCommunicator communicator = new RegexJSONCommunicator(transmitter);
         featureRepository = new FeatureRepository();
         ISession session = new SessionFactory(featureRepository).createSession(communicator);
         client = new Client(session, featureRepository, new PromiseRepository());

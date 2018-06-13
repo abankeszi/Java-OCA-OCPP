@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 public class MeterValuesRequest implements Request {
 
     private int connectorId;
-    private int transactionId;
+    private Integer transactionId;
     private MeterValue[] meterValue;
 
     @Override
@@ -59,7 +59,7 @@ public class MeterValuesRequest implements Request {
 
     /**
      * This contains a number (&gt;0) designating a connector of the Charge Point.
-     * ‘0’ (zero) is used to designate the main power meter.
+     * '0' (zero) is used to designate the main power meter.
      *
      * @return Connector
      */
@@ -69,7 +69,7 @@ public class MeterValuesRequest implements Request {
 
     /**
      * Required. This contains a number (&gt;0) designating a connector of the Charge Point.
-     * ‘0’ (zero) is used to designate the main power meter.
+     * '0' (zero) is used to designate the main power meter.
      *
      * @param connectorId                   integer, connector
      * @throws PropertyConstraintException  Value is 0 or negative.
@@ -87,7 +87,7 @@ public class MeterValuesRequest implements Request {
      *
      * @return transaction id.
      */
-    public int getTransactionId() {
+    public Integer getTransactionId() {
         return transactionId;
     }
 
@@ -97,7 +97,7 @@ public class MeterValuesRequest implements Request {
      * @param transactionId integer, transaction id.
      */
     @XmlElement
-    public void setTransactionId(int transactionId) {
+    public void setTransactionId(Integer transactionId) {
         this.transactionId = transactionId;
     }
 

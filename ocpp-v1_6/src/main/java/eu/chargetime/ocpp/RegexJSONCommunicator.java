@@ -36,7 +36,7 @@ public class RegexJSONCommunicator extends JSONCommunicator {
   private static class RegexCalendarDeserializer implements JsonDeserializer<Calendar> {
 
     private static final Pattern UTC_DATE_PATTERN =
-      Pattern.compile("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]+)Z");
+      Pattern.compile("([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(.([0-9]+))?Z");
 
     @Override
     public Calendar deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
@@ -56,7 +56,12 @@ public class RegexJSONCommunicator extends JSONCommunicator {
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(matcher.group(4)));
         calendar.set(Calendar.MINUTE, Integer.parseInt(matcher.group(5)));
         calendar.set(Calendar.SECOND, Integer.parseInt(matcher.group(6)));
-        calendar.set(Calendar.MILLISECOND, Integer.parseInt(zeroPad(matcher.group(7))));
+
+        if (matcher.group(8) != null) {
+          calendar.set(Calendar.MILLISECOND, Integer.parseInt(zeroPad(matcher.group(8))));
+        } else {
+          calendar.set(Calendar.MILLISECOND, 0);
+        }
 
         return calendar;
       } catch (Exception e) {

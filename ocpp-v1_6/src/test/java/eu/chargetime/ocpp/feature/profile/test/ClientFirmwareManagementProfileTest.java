@@ -50,8 +50,7 @@ public class ClientFirmwareManagementProfileTest extends ProfileTest {
     ClientFirmwareManagementProfile profile;
 
     @Mock
-    private
-    ClientFirmwareManagementEventHandler handler;
+    private ClientFirmwareManagementEventHandler handler;
 
     @Before
     public void setup() {
@@ -106,31 +105,6 @@ public class ClientFirmwareManagementProfileTest extends ProfileTest {
         verify(handler, times(1)).handleGetDiagnosticsRequest(eq(request));
     }
 
-
-    @Test
-    public void handleRequest_aDiagnosticsStatusNotificationRequest_callsHandleDiagnosticsStatusNotificationRequest() {
-        // Given
-        DiagnosticsStatusNotificationRequest request = new DiagnosticsStatusNotificationRequest();
-
-        // When
-        profile.handleRequest(SESSION_NULL, request);
-
-        // Then
-        verify(handler, times(1)).handleDiagnosticsStatusNotificationRequest(eq(request));
-    }
-
-    @Test
-    public void handleRequest_aFirmwareStatusNotificationRequest_callsHandleFirmwareStatusNotificationRequest() {
-        // Given
-        FirmwareStatusNotificationRequest request = new FirmwareStatusNotificationRequest();
-
-        // When
-        profile.handleRequest(SESSION_NULL, request);
-
-        // Then
-        verify(handler, times(1)).handleFirmwareStatusNotificationRequest(eq(request));
-    }
-
     @Test
     public void handleRequest_aUpdateFirmwareRequest_callsHandleUpdateFirmwareRequest() {
         // Given
@@ -141,6 +115,30 @@ public class ClientFirmwareManagementProfileTest extends ProfileTest {
 
         // Then
         verify(handler, times(1)).handleUpdateFirmwareRequest(eq(request));
+    }
+
+    @Test
+    public void createDiagnosticsStatusNotificationRequest_withStatus_returnsDiagnosticsStatusNotificationRequestWithStatus() {
+        // Given
+        DiagnosticsStatus status = DiagnosticsStatus.Idle;
+
+        // When
+        DiagnosticsStatusNotificationRequest result = profile.createDiagnosticsStatusNotificationRequest(status);
+
+        // Then
+        assertThat(result.getStatus(), is(status));
+    }
+
+    @Test
+    public void createFirmwareStatusNotificationRequest_withStatus_returnsFirmwareStatusNotificationRequestWithStatus() {
+        // Given
+        FirmwareStatus status = FirmwareStatus.Idle;
+
+        // When
+        FirmwareStatusNotificationRequest result = profile.createFirmwareStatusNotificationRequest(status);
+
+        // Then
+        assertThat(result.getStatus(), is(status));
     }
 
 }

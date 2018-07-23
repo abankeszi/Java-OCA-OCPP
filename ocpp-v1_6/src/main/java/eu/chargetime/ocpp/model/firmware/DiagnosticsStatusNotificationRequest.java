@@ -1,13 +1,4 @@
 package eu.chargetime.ocpp.model.firmware;
-
-import eu.chargetime.ocpp.PropertyConstraintException;
-import eu.chargetime.ocpp.model.Request;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import java.util.Objects;
-
 /*
  * ChargeTime.eu - Java-OCA-OCPP
  *
@@ -35,14 +26,24 @@ import java.util.Objects;
  * SOFTWARE.
  */
 
+import eu.chargetime.ocpp.PropertyConstraintException;
+import eu.chargetime.ocpp.model.Request;
+import eu.chargetime.ocpp.utilities.MoreObjects;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
+
 /**
- * Sent by the Central System to the Charge Point.
+ * Sent by the Charge Point to the Central System.
  */
 @XmlRootElement
 public class DiagnosticsStatusNotificationRequest implements Request {
+
     private DiagnosticsStatus status;
 
-    public DiagnosticsStatusNotificationRequest() { }
+    public DiagnosticsStatusNotificationRequest() {
+    }
 
     /**
      * Set required fields.
@@ -70,13 +71,13 @@ public class DiagnosticsStatusNotificationRequest implements Request {
     /**
      * Required. This contains the identifier of the status.
      *
-     * @param status DiagnosticsStatus, value != 0.
-     * @throws PropertyConstraintException Value was zero or negative.
+     * @param status {@link DiagnosticsStatus}.
      */
     @XmlElement
-    public void setStatus(DiagnosticsStatus status) throws PropertyConstraintException {
-        if (status == null)
-            throw new PropertyConstraintException("status", null);
+    public void setStatus(DiagnosticsStatus status) {
+        if (status == null) {
+            throw new PropertyConstraintException(null, "Diagnostic status must be present");
+        }
 
         this.status = status;
     }
@@ -101,9 +102,8 @@ public class DiagnosticsStatusNotificationRequest implements Request {
 
     @Override
     public String toString() {
-        return "DiagnosticsStatusNotificationRequest{" +
-                "status=" + status +
-                ", isValid=" + String.valueOf(validate()) +
-                '}';
+        return MoreObjects.toStringHelper(this)
+                          .add("status", status)
+                          .toString();
     }
 }

@@ -1,4 +1,5 @@
-package eu.chargetime.ocpp.feature.profile;/*
+package eu.chargetime.ocpp.feature.profile;
+/*
     ChargeTime.eu - Java-OCA-OCPP
     
     MIT License
@@ -27,10 +28,7 @@ package eu.chargetime.ocpp.feature.profile;/*
 import eu.chargetime.ocpp.feature.*;
 import eu.chargetime.ocpp.model.Confirmation;
 import eu.chargetime.ocpp.model.Request;
-import eu.chargetime.ocpp.model.firmware.DiagnosticsStatusNotificationRequest;
-import eu.chargetime.ocpp.model.firmware.FirmwareStatusNotificationRequest;
-import eu.chargetime.ocpp.model.firmware.GetDiagnosticsRequest;
-import eu.chargetime.ocpp.model.firmware.UpdateFirmwareRequest;
+import eu.chargetime.ocpp.model.firmware.*;
 
 import java.util.HashSet;
 import java.util.UUID;
@@ -49,6 +47,30 @@ public class ClientFirmwareManagementProfile implements Profile {
         features.add(new UpdateFirmwareFeature(this));
     }
 
+    /**
+     * Create a {@link DiagnosticsStatusNotificationRequest} with required values.
+     *
+     * @param status required. Identification of the {@link DiagnosticsStatus}.
+     * @return an instance of {@link DiagnosticsStatusNotificationRequest}.
+     * @see DiagnosticsStatusNotificationRequest
+     * @see DiagnosticsStatusNotificationFeature
+     */
+    public DiagnosticsStatusNotificationRequest createDiagnosticsStatusNotificationRequest(DiagnosticsStatus status) {
+        return new DiagnosticsStatusNotificationRequest(status);
+    }
+
+    /**
+     * Create a {@link FirmwareStatusNotificationRequest} with required values.
+     *
+     * @param status required. Identification of the {@link FirmwareStatus}.
+     * @return an instance of {@link FirmwareStatusNotificationRequest}.
+     * @see FirmwareStatusNotificationRequest
+     * @see FirmwareStatusNotificationFeature
+     */
+    public FirmwareStatusNotificationRequest createFirmwareStatusNotificationRequest(FirmwareStatus status) {
+        return new FirmwareStatusNotificationRequest(status);
+    }
+
     @Override
     public Feature[] getFeatureList() {
         return features.toArray(new Feature[0]);
@@ -60,10 +82,6 @@ public class ClientFirmwareManagementProfile implements Profile {
 
         if (request instanceof GetDiagnosticsRequest) {
             result = eventHandler.handleGetDiagnosticsRequest((GetDiagnosticsRequest) request);
-        } else if (request instanceof DiagnosticsStatusNotificationRequest) {
-            result = eventHandler.handleDiagnosticsStatusNotificationRequest((DiagnosticsStatusNotificationRequest) request);
-        } else if (request instanceof FirmwareStatusNotificationRequest) {
-            result = eventHandler.handleFirmwareStatusNotificationRequest((FirmwareStatusNotificationRequest) request);
         } else if (request instanceof UpdateFirmwareRequest) {
             result = eventHandler.handleUpdateFirmwareRequest((UpdateFirmwareRequest) request);
         }

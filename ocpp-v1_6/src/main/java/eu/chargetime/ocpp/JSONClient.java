@@ -1,21 +1,23 @@
 package eu.chargetime.ocpp;
 
-import eu.chargetime.ocpp.feature.profile.ClientCoreProfile;
-import eu.chargetime.ocpp.feature.profile.Profile;
-import eu.chargetime.ocpp.model.Confirmation;
-import eu.chargetime.ocpp.model.Request;
-import eu.chargetime.ocpp.wss.BaseWssSocketBuilder;
-import eu.chargetime.ocpp.wss.WssSocketBuilder;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.concurrent.CompletionStage;
+
+import javax.net.ssl.SSLContext;
+
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.protocols.Protocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.net.ssl.SSLContext;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.concurrent.CompletionStage;
+import eu.chargetime.ocpp.feature.profile.ClientCoreProfile;
+import eu.chargetime.ocpp.feature.profile.Profile;
+import eu.chargetime.ocpp.model.Confirmation;
+import eu.chargetime.ocpp.model.Request;
+import eu.chargetime.ocpp.wss.BaseWssSocketBuilder;
+import eu.chargetime.ocpp.wss.WssSocketBuilder;
 
 /*
  * ChargeTime.eu - Java-OCA-OCPP
@@ -73,7 +75,7 @@ public class JSONClient implements IClientAPI {
         draftOcppOnly = new Draft_6455(Collections.emptyList(),
                 Collections.singletonList(new Protocol("ocpp1.6")));
         transmitter = new WebSocketTransmitter(configuration, draftOcppOnly);
-        RegexJSONCommunicator communicator = new RegexJSONCommunicator(transmitter);
+        JaxbJSONCommunicator communicator = new JaxbJSONCommunicator(transmitter);
         featureRepository = new FeatureRepository();
         ISession session = new SessionFactory(featureRepository).createSession(communicator);
         client = new Client(session, featureRepository, new PromiseRepository());

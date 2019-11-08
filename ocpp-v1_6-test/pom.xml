@@ -26,24 +26,33 @@
             <organization>chargetime.eu</organization>
             <organizationUrl>http://www.chargetime.eu</organizationUrl>
         </developer>
+        <developer>
+            <name>Adam Bankeszi</name>
+            <email>abankeszi@monguz.hu</email>
+            <organization>Qulto</organization>
+            <organizationUrl>https://qulto.eu</organizationUrl>
+        </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ChargeTimeEU/Java-OCA-OCPP.git</connection>
-        <developerConnection>scm:git:ssh://github.com:ChargeTimeEU/Java-OCA-OCPP.git</developerConnection>
-        <url>https://github.com/ChargeTimeEU/Java-OCA-OCPP.git</url>
-    </scm>
+        <connection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</connection>
+        <developerConnection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</developerConnection>
+        <url>https://github.com/abankeszi/Java-OCA-OCPP.git</url>
+	</scm>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+	<distributionManagement>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+          <id>monguz.nexus.all</id>
+          <name>Monguz Release Repository</name>
+          <url>https://nexus.dev.monguz.hu/repository/releases/</url>
         </repository>
+        <snapshotRepository>
+          <id>monguz.nexus.all</id>
+          <name>Monguz Snapshot Repository</name>
+          <url>https://nexus.dev.monguz.hu/repository/snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
+
 
     <dependencies>
         <dependency>

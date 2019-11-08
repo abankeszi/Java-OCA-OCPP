@@ -6,7 +6,7 @@
 
     <groupId>eu.chargetime.ocpp</groupId>
     <artifactId>all</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5-MONGUZ-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Java-OCA-OCPP</name>
@@ -27,12 +27,18 @@
             <organization>chargetime.eu</organization>
             <organizationUrl>http://www.chargetime.eu</organizationUrl>
         </developer>
+        <developer>
+            <name>Adam Bankeszi</name>
+            <email>abankeszi@monguz.hu</email>
+            <organization>Qulto</organization>
+            <organizationUrl>https://qulto.eu</organizationUrl>
+        </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ChargeTimeEU/Java-OCA-OCPP.git</connection>
-        <developerConnection>scm:git:ssh://github.com:ChargeTimeEU/Java-OCA-OCPP.git</developerConnection>
-        <url>https://github.com/ChargeTimeEU/Java-OCA-OCPP.git</url>
+        <connection>scm:git:git://github.com/abankeszi/Java-OCA-OCPP.git</connection>
+        <developerConnection>scm:git:ssh://github.com/abankeszi/Java-OCA-OCPP.git</developerConnection>
+        <url>https://github.com/abankeszi/Java-OCA-OCPP.git</url>
     </scm>
 
     <modules>

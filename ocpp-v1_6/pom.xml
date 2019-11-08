@@ -50,7 +50,7 @@
         <dependency>
             <groupId>eu.chargetime.ocpp</groupId>
             <artifactId>common</artifactId>
-            <version>0.5-SNAPSHOT</version>
+            <version>0.5-MONGUZ-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

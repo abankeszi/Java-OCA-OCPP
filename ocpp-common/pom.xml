@@ -4,7 +4,7 @@
 
     <groupId>eu.chargetime.ocpp</groupId>
     <artifactId>common</artifactId>
-    <version>0.5-MONGUZ</version>
+    <version>0.6-MONGUZ-SNAPSHOT</version>
 
     <name>Java-OCA-OCPP common</name>
     <description>Implementation of Open Charge-Point Protocol common library.</description>
@@ -36,7 +36,7 @@
         <connection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</connection>
         <developerConnection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</developerConnection>
         <url>https://github.com/abankeszi/Java-OCA-OCPP.git</url>
-	  <tag>0.5-MONGUZ</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<distributionManagement>

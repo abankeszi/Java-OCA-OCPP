@@ -36,10 +36,10 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/abankeszi/Java-OCA-OCPP.git</connection>
-        <developerConnection>scm:git:ssh://github.com/abankeszi/Java-OCA-OCPP.git</developerConnection>
+        <connection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</connection>
+        <developerConnection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</developerConnection>
         <url>https://github.com/abankeszi/Java-OCA-OCPP.git</url>
-    </scm>
+	</scm>
 
     <modules>
         <module>ocpp-common</module>

@@ -6,7 +6,7 @@
 
     <groupId>eu.chargetime.ocpp</groupId>
     <artifactId>v1_6</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5-MONGUZ-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Java-OCA-OCPP v1.6</name>

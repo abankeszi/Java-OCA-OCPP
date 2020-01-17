@@ -4,7 +4,7 @@
 
     <groupId>eu.chargetime.ocpp</groupId>
     <artifactId>all</artifactId>
-    <version>0.6-MONGUZ-SNAPSHOT</version>
+    <version>0.6-MONGUZ</version>
     <packaging>pom</packaging>
 
     <name>Java-OCA-OCPP</name>
@@ -37,7 +37,7 @@
         <connection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</connection>
         <developerConnection>scm:git:https://github.com/abankeszi/Java-OCA-OCPP.git</developerConnection>
         <url>https://github.com/abankeszi/Java-OCA-OCPP.git</url>
-	  <tag>HEAD</tag>
+	  <tag>all-0.6-MONGUZ</tag>
   </scm>
 
 	<distributionManagement>
